@@ -17,7 +17,7 @@ date = covid_case.find("li", {"class" : "info-date"}).text
 date = ' '.join(date.split()[1:])
 
 info_case = {
-      'data' : [{'data': date, 'positive' : info_case[0].text, 'recover' : info_case[1].text, 'died' : info_case[2].text}]
+      'data' : [{'tanggal': date, 'positive' : info_case[0].text, 'recover' : info_case[1].text, 'died' : info_case[2].text}]
   }
 
 print(json.dumps(info_case, indent=4))
