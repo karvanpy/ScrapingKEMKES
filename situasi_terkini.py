@@ -8,16 +8,25 @@ url = "https://www.kemkes.go.id"
 
 content = requests.get(url)
 
-soup = BeautifulSoup(content.text, 'html.parser')
+soup = BeautifulSoup(content.text, "html.parser")
 
-covid_case = soup.find("div", {"class" : "covid-case-container"})
+covid_case = soup.find("div", {"class": "covid-case-container"})
 
-info_case = covid_case.find("li", {"class" : "info-case"}).find_all("td", {"class" : "case"})
-date = covid_case.find("li", {"class" : "info-date"}).text
-date = ' '.join(date.split()[1:])
+info_case = covid_case.find("li", {"class": "info-case"}).find_all(
+    "td", {"class": "case"}
+)
+date = covid_case.find("li", {"class": "info-date"}).text
+date = " ".join(date.split()[1:])
 
 info_case = {
-      'data' : [{'tanggal': date, 'positive' : info_case[0].text, 'recover' : info_case[1].text, 'died' : info_case[2].text}]
-  }
+    "data": [
+        {
+            "tanggal": date,
+            "positif": info_case[0].text,
+            "sembuh": info_case[1].text,
+            "meninggal": info_case[2].text,
+        }
+    ]
+}
 
-print(json.dumps(info_case, indent=4))
+print(json.dumps(info_case, indent=2))
