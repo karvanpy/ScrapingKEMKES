@@ -11,7 +11,11 @@ causes from COVID-19 in .py file format.
 pip install -r requirements
 ```
 
-2. Run the 'scrape.py' file
+2. Run the 'scrape.py' file if you want get current situation 
 ```
 python scrape.py
+```
+Run the 'berita_terpopuler.py' if you want get list of news popular information
+```
+python berita_terpopuler.py
 ```
